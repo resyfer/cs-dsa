@@ -5,6 +5,7 @@
 
 #define MAX 4500
 
+/* Addition of two string numbers */
 void add(char num1[], char num2[], char result[])
 {
   int carry = 0;
@@ -16,6 +17,7 @@ void add(char num1[], char num2[], char result[])
   }
 }
 
+/* Copy Num2 to Num1 */
 void copy2on1(char num1[], char num2[])
 {
   for (int i = MAX - 1; i >= 0; i--)
@@ -29,12 +31,14 @@ char result[MAX];
 int main()
 {
 
+  /* Initialize Numbers */
   for (int i = 0; i < MAX; i++)
   {
     fibo1[i] = fibo2[i] = result[i] = '0';
   }
   fibo2[MAX - 1] = '1';
 
+  /* Input */
   int n;
   scanf("%d", &n);
 
@@ -44,6 +48,8 @@ int main()
   }
   else
   {
+    
+    /* Fibonacci Algorithm */
     for (int i = 2; i <= n; i++)
     {
       add(fibo1, fibo2, result);
@@ -51,6 +57,7 @@ int main()
       copy2on1(fibo2, result);
     }
 
+    /* Print Number */
     int numStart = 0;
     for (int i = 0; i < MAX; i++)
     {
