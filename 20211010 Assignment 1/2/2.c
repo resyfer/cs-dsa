@@ -42,6 +42,7 @@ int main()
 {
 
   char email[MAX] = {0};
+  printf("Enter Email > ");
   scanf("%s", email);
 
   printf("The email is %s\n", ((isValidEmail(email)) ? "valid" : "invalid"));

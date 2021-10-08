@@ -19,6 +19,7 @@ int floatingNumValid(char num[])
 int main()
 {
   char num[MAX] = {0};
+  printf("Enter number > ");
   scanf("%s", num);
 
   printf("Floating number is %s\n", ((floatingNumValid(num)) ? "valid" : "invalid"));
