@@ -1,0 +1,1 @@
+Run the `input.c` file first, and generate the input, and then run the `selectionSort.c` and `bubbleSort.c` to apply the respective algorithms on the thus generated input

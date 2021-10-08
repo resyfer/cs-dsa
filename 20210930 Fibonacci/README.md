@@ -1,4 +1,4 @@
-# C Program for Large Fibonacci Numbe
+# C Program for Large Fibonacci Numbers
 
 Name: Saurav Pal
 Scholar ID: 2012039
