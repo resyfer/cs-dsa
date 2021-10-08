@@ -3,23 +3,34 @@
 
 #define MAX 2000
 
-int unaryToDecimal(char number[MAX]) {
+int logTwo(int n) {
+  return (n > 1) ? (1 + logTwo(n/2)) : 0;
+}
+
+int binaryToDecimal(char number[MAX]) {
   int counter = 0;
-  for(int i = 0; i<MAX; i++)
-    if(number[i] == 'I')
-      counter++;
+  for(int i = 0; i<MAX; i++) {
+    if(number[i] == '1') {
+      counter*=2;
+      counter+=1;
+    } else if (number[i] == '0')
+      counter*=2;
+  }
 
   return counter;
 }
 
-char *decimalToUnary(int n) {
+char *decimalToBinary(int n) {
 
-  char *number = (char *) malloc((n+1) * sizeof(char));
+  int size = logTwo(n) + 1;
+  char *number = (char *) malloc((size + 1) * sizeof(char));
 
-  for(int i = 0; i<n; i++)
-    number[i] = 'I';
+  for(int i = size-1; i>=0; i--) {
+    number[i] = (n%2) + '0';
+    n/=2;
+  }
 
-  number[n] = '\0';
+  number[size] = '\0';
   return number;
 
 }
@@ -39,11 +50,11 @@ int main() {
   
   printf("Enter number 1 > ");
   scanf("%s", inputNum1);
-  num1 = unaryToDecimal(inputNum1);
+  num1 = binaryToDecimal(inputNum1);
 
   printf("Enter number 2 > ");
   scanf("%s", inputNum2);
-  num2 = unaryToDecimal(inputNum2);
+  num2 = binaryToDecimal(inputNum2);
 
   int op;
   printf("\n");
@@ -55,12 +66,12 @@ int main() {
   char *result;
   switch(op) {
     case 1:
-      result = decimalToUnary(addNums(num1, num2));
+      result = decimalToBinary(addNums(num1, num2));
       printf("Result > %s\n", result);
       break;
     
     case 2:
-      result = decimalToUnary(multiplyNums(num1, num2));
+      result = decimalToBinary(multiplyNums(num1, num2));
       printf("Result > %s\n", result);
       break;
 
