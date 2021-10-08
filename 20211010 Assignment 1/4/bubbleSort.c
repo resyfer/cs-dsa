@@ -19,13 +19,11 @@ void swapInts(int *a, int *b) {
   *b = temp;
 }
 
-void selectionSort(int input[], int n) {
-  for (int i = 0; i < n; i++) {
-    int min = i;
-    for (int j = i + 1; j < n; j++) {
-      if(input[j] < input[min]) min = j;
+void bubbleSort(int input[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - 1 - i; j++) {
+      if(input[j] > input[j+1]) swapInts(&input[j], &input[j+1]);
     }
-    swapInts(&input[min], &input[i]);
   }
 
 }
@@ -47,7 +45,7 @@ int main() {
 
   clock_t start = clock();
 
-  selectionSort(input, n);
+  bubbleSort(input, n);
 
   clock_t end = clock();
   printf("Total elapsed time : %f\n", (double)(end - start)/(double)CLOCKS_PER_SEC);
