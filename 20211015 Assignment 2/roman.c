@@ -6,8 +6,7 @@
 char symbols[13][3] = {"I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
 int nums[13] = {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
 
-int numLength(char number[MAX])
-{
+int numLength(char number[MAX]) {
   int length = MAX;
   for (int i = 0; i < MAX; i++)
   {
@@ -20,8 +19,7 @@ int numLength(char number[MAX])
   return length;
 }
 
-int romanToDecimal(char number[MAX])
-{
+int romanToDecimal(char number[MAX]) {
   int counter = 0;
   int size = numLength(number);
 
@@ -46,8 +44,7 @@ int romanToDecimal(char number[MAX])
   return counter;
 }
 
-char *decimalToRoman(int n)
-{
+char *decimalToRoman(int n) {
 
   char *number = (char *)malloc((MAX) * sizeof(char));
   for (int i = 0; i < MAX; i++)
@@ -79,18 +76,15 @@ char *decimalToRoman(int n)
   return number;
 }
 
-int addNums(int num1, int num2)
-{
+int addNums(int num1, int num2) {
   return num1 + num2;
 }
 
-int multiplyNums(int num1, int num2)
-{
+int multiplyNums(int num1, int num2) {
   return num1 * num2;
 }
 
-int main()
-{
+int main() {
 
   char inputNum1[MAX] = {0}, inputNum2[MAX] = {0};
   int num1, num2;
@@ -111,8 +105,7 @@ int main()
   scanf("%d", &op);
 
   char *result;
-  switch (op)
-  {
+  switch (op) {
   case 1:
     result = decimalToRoman(addNums(num1, num2));
     printf("Result > %s\n", result);
