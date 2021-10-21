@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
+#include <time.h>
+
+#define MAX (int)1e9+7
 
 //a
 void InsertItemAtLast(int A[], int n, int key) {
@@ -107,4 +111,132 @@ int DeleteSubset(int A[], int n, int i, int j) {
   for(int k = j+1; k<n; k++)
     A[(k-j) + (i-1)] = A[k];
   A = (int*) realloc(A, size);
+}
+
+//l
+void SplitIntoTwoArray(int A[], int n, int *splitArray1, int *splitArray2) {  
+  
+  //Assuming split is from middle
+  int mid = n/2;
+  for(int i = 0; i<=mid; i++)
+    splitArray1[i] = A[i];
+
+  for(int i = mid+1; i<n; i++)
+    splitArray2[i - (mid + 1)] = A[i];
+}
+
+//m
+void CloneArray(int A[], int n, int B[]) {
+  for(int i = 0; i<n; i++)
+    B[i] = A[i];
+}
+
+//n
+void ShiftLeftArray(int A[], int n, int r) {
+  for(int i = 0; i<n-r; i++)
+    A[i] = A[i+r];
+
+  A = (int*) realloc(A, n-1);
+}
+
+//o
+void ShiftRightArray(int A[], int n, int r) {
+  A = (int *) realloc(A, n-r);
+}
+
+//p
+void RotateArrayClockwise(int A[], int n, int r) {
+  int temp[r];
+
+  for(int i = 0; i<n; i++) {
+    if (i<r)
+      temp[i] = A[i]; //copying to temp
+    else {
+      A[i-r] = A[i]; //shifting
+      
+      if (i>=n-r)
+        A[i] = temp[i - (n-r)]; //Placing rotated elements
+    }
+  }
+}
+
+//q
+void RotateArrayAntiClockwise(int A[], int n, int r) {
+  int temp[r];
+
+  for(int i = n-r; i<n; i++)
+    temp[i - (n-r)] = A[i];
+
+  for(int i = n-r-1; i>=0; i--)
+    A[i+r] = A[i];
+
+  for(int i = r-1; i>=0; i--)
+    A[i] = temp[i];
+}
+
+//r
+int FindMin(int A[], int n) {
+  int min = 0;
+  for(int i = 0; i<n; i++) {
+    if(A[min] > A[i])
+      min = i;
+  }
+  return min;
+}
+
+//s
+int FindMax(int A[], int n) {
+  int max = 0;
+  for(int i = 0; i<n; i++) {
+    if(A[max] < A[i])
+      max = i;
+  }
+  return max;
+}
+
+//t
+void FillArrayPseudoRandom(int A[], int n) {
+  
+  srand(time(0));
+
+  for(int i = 0; i<n; i++)
+    A[i] = rand();
+}
+
+//u
+void FillArrayTrueRandom(int A[], int n) {
+  
+  int mods[10] = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000};
+  srand(time(0));
+
+  for(int i = 0; i<n; i++)
+    A[i] = rand() % mods[rand() % 10];
+}
+
+//v
+int *IncreaseArraySize(int A[], int n, int m) {
+  return (int*)realloc(A, m);
+}
+
+//w
+void SetArrayToZero(int A[], int n) {
+  for(int i = 0; i<n; i++)
+    A[i] = 0;
+}
+
+//x
+void DeleteAllItemOfArray(int A[], int n) {
+  for(int i = 0; i<n; i++)
+    A[i] = 0;
+}
+
+//y
+void DeleteArray(int A[]) {
+  free(A);
+}
+
+//z
+int* AllocateArray(int n, int *B) {
+  int *A = (int*) malloc(n*sizeof(int));
+  return A;
 }

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "4.h"
 
 int main() {
@@ -6,16 +5,19 @@ int main() {
   int n;
   scanf("%d", &n);
 
-  int *A = (int*) malloc(n*sizeof(int));
+  // int *A = (int*) malloc(n*sizeof(int));
+  int *B;
+  int *A = AllocateArray(n, B);
+  
   for(int i = 0; i<n; i++)
-    scanf("%d", &A[i]);
+    A[i] = i+1;
 
-  DeleteSubset(A, n, 2, 4);
-
-  for(int i = 0; i<3; i++)
+  for(int i = 0; i<n; i++)
     printf("%d ", A[i]);
   printf("\n");
 
-  free(A);
+  for(int i = 0; i<n; i++)
+    printf("%d ", B[i]);
+  printf("\n");
   return 0;
 }
